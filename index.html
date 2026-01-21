@@ -558,11 +558,31 @@
             }
         }
 
-        @media screen and (min-width: 480px) {
+@media screen and (min-width: 480px) and (max-width: 768px) {
           .single-fanoos{
                 display:none;
                visibility:hidden;
             }
+      .bilingual-text {
+                flex-direction: row;
+                align-items: center;
+                gap: 15px;
+                justify-content: space-between;
+            }
+
+            .english-text {
+                font-size: 1rem;
+                text-align: end;
+            }
+
+            i.fas.fa-chevron-left.mr-2 {
+                position: unset;
+            }
+
+            i.fas.fa-chevron-right.ml-2 {
+                position: unset;
+            }
+      
         
         }
          .single-fanoos{
