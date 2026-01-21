@@ -388,6 +388,7 @@
             }
             .english-text {
                 font-size: 1rem;
+                text-align: end;
             }
              i.fas.fa-chevron-left.mr-2{
                  position: unset ;
@@ -396,7 +397,6 @@
                       position: unset;
             }
         }
-
         i.fas.fa-chevron-left.mr-2 {
     position: absolute;
     bottom: 47px;
@@ -411,41 +411,296 @@ i.fas.fa-chevron-right.ml-2 {
     position: absolute;
     left: 0;
 }
+
+        /* Enhanced Ramadan Kareem Header */
+        .ramadan-header {
+            position: relative;
+            margin-bottom: 2rem;
+            padding: 1.5rem 0;
+            text-align: center;
+            overflow: hidden;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+            border-radius: 16px;
+        }
+        
+        .ramadan-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffd700, transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        .ramadan-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffd700, transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .ramadan-title {
+            font-family: 'Amiri', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffd700, #ffb700, #ffd700);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: goldGradient 3s ease infinite;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            margin: 0.5rem 0;
+        }
+        
+        @keyframes goldGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .ramadan-subtitle {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            opacity: 0.9;
+        }
+        
+        /* Gallery Slider with Main Image and Thumbnails */
+        .gallery-slider-container {
+            position: relative;
+            margin-bottom: 2rem;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .main-image-container {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+        
+        .main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease;
+        }
+        
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .thumbnails-container {
+            display: flex;
+            gap: 10px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            overflow-x: auto;
+        }
+        
+        .thumbnail {
+            flex: 0 0 auto;
+            width: 120px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .thumbnail:hover {
+            transform: scale(1.05);
+        }
+        
+        .thumbnail.active {
+            border-color: #ffd700;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .gallery-controls {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 10;
+        }
+        
+        .gallery-btn {
+            background: rgba(255, 215, 0, 0.8);
+            color: #1a1a2e;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 20px;
+        }
+        
+        .gallery-btn:hover {
+            background: #ffd700;
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+        
+        /* Golden Button Styling */
+        .golden-btn {
+            background: linear-gradient(135deg, #ffd700 0%, #ffb700 50%, #ffd700 100%);
+            background-size: 200% 200%;
+            color: #1a1a2e;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .golden-btn:hover {
+            background-position: 100% 0;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+        
+        .golden-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .golden-btn:hover::before {
+            left: 100%;
+        }
     </style>
 </head>
 <body class="h-full font-tajawal">
     <div id="app" class="gradient-bg min-h-screen h-full w-full relative overflow-auto">
         <!-- Animated Stars -->
         <div id="stars-container" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
-
         <!-- Floating Particles -->
         <div id="particles-container" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
-
         <!-- Header -->
         <header class="relative z-10 py-6 px-4">
             <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
                 <!-- Hotel Logo -->
+              
                 <div class="mb-4 md:mb-0">
                     <img src="golden-tulip-logo.png" alt="فندق جولدن توليب الرياض | Golden Tulip Riyadh Hotel" class="h-16 md:h-20 w-auto">
                 </div>
                 
+               
                 <!-- Header Contact Info -->
                 <div class="flex flex-col md:flex-row gap-4 text-white text-sm">
                     <div class="flex items-center gap-2">
                         <i class="fas fa-phone text-yellow-400"></i>
-                    <a href="tel:+966112256555"> <span> 2256555 11  966 </span> </a>
+                    <a href="tel:+966555266174"> <span> 555266174 966 </span> </a>
                     </div>
                     <div class="flex items-center gap-2">
                         <i class="fas fa-envelope text-yellow-400"></i>
-                        <span>info@goldentulipriyadh.com</span>
+                        <span>booking@goldentulipriyadh.com</span>
                     </div>
                 </div>
             </div>
         </header>
-
         <!-- Main Content -->
         <main class="relative z-10 flex-grow">
             <div class="max-w-7xl mx-auto px-4 py-8">
+                <!-- Ramadan Kareem Header -->
+                <div class="ramadan-header mb-8">
+                    <div class="moon-glow mb-4 md:mb-6 text-center">
+                        <svg width="80" height="80" viewBox="0 0 100 100" class="md:w-24 md:h-24 mx-auto">
+                            <defs>
+                                <linearGradient id="moonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#ffd700" />
+                                    <stop offset="100%" stop-color="#ffb700" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M50 10 A40 40 0 1 1 50 90 A30 30 0 1 0 50 10" fill="url(#moonGradient)" />
+                            <circle cx="75" cy="25" r="3" fill="#ffd700" />
+                            <circle cx="85" cy="45" r="2" fill="#ffd700" />
+                            <circle cx="70" cy="60" r="2.5" fill="#ffd700" />
+                        </svg>
+                    </div>
+                    <h1 class="ramadan-title">
+                        <div class="bilingual-text" style="flex-direction: column;">
+                             <img src="ramadan-kareem.png" alt="فندق جولدن توليب الرياض | Golden Tulip Riyadh Hotel" class="h-16 md:h-20 w-auto">
+                            
+                            <!-- <span class="arabic-text">رمضان كريم</span>
+                            <span class="english-text">Ramadan Kareem</span> -->
+                        </div>
+                    </h1>
+                    <p class="ramadan-subtitle" style="flex-direction: column;">
+                        <div class="bilingual-text" style="flex-direction: column;">
+                            <span class="arabic-text">انضم إلى حملتنا المباركة في رمضان في فندق جولدن توليب الرياض</span>
+                            <span class="english-text">Join our blessed Ramadan campaign at Golden Tulip Riyadh Hotel</span>
+                        </div>
+                    </p>
+                </div>
+                
+                <!-- Gallery Slider with Main Image and Thumbnails -->
+                <div class="gallery-slider-container mb-8">
+                    <div class="main-image-container">
+                        <img id="main-gallery-image" src="https://media.iceportal.com/138837/photos/71672430_XXL.jpg" alt="صالة البار/الاستراحة في فندق جولدن توليب الرياض" class="main-image">
+                        <div class="image-caption">
+                            <div class="bilingual-text">
+                                <div class="arabic-text">صالة البار/الاستراحة في فندق جولدن توليب الرياض</div>
+                                <div class="english-text">Bar/Lounge at Golden Tulip Riyadh Hotel</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-controls">
+                        <button class="gallery-btn" id="prev-slide">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <button class="gallery-btn" id="next-slide">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                    </div>
+                    <div class="thumbnails-container" id="thumbnails-container">
+                        <!-- Thumbnails will be dynamically added here -->
+                    </div>
+                </div>
+                
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     <!-- Form Section -->
                     <div class="lg:col-span-2">
@@ -476,41 +731,9 @@ i.fas.fa-chevron-right.ml-2 {
                                 <rect x="15" y="10" width="10" height="5" rx="2" fill="#ffd700" />
                             </svg>
                         </div>
-
-                        <!-- Crescent Moon -->
-                        <div class="moon-glow mb-4 md:mb-6 text-center">
-                            <svg width="80" height="80" viewBox="0 0 100 100" class="md:w-24 md:h-24 mx-auto">
-                                <defs>
-                                    <linearGradient id="moonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stop-color="#ffd700" />
-                                        <stop offset="100%" stop-color="#ffb700" />
-                                    </linearGradient>
-                                </defs>
-                                <path d="M50 10 A40 40 0 1 1 50 90 A30 30 0 1 0 50 10" fill="url(#moonGradient)" />
-                                <circle cx="75" cy="25" r="3" fill="#ffd700" />
-                                <circle cx="85" cy="45" r="2" fill="#ffd700" />
-                                <circle cx="70" cy="60" r="2.5" fill="#ffd700" />
-                            </svg>
-                        </div>
-
+                        
                         <!-- Form Card -->
                         <div class="form-card w-full bg-white/10 rounded-3xl p-6 md:p-8 shadow-2xl border border-white/20">
-                            <!-- Header -->
-                            <div class="text-center mb-6 md:mb-8">
-                                <h1 class="font-amiri text-3xl md:text-4xl font-bold text-white mb-2">
-                                    <div class="bilingual-text">
-                                        <span class="arabic-text">رمضان كريم</span>
-                                        <span class="english-text">Ramadan Kareem</span>
-                                    </div>
-                                </h1>
-                                <p class="text-gray-300 text-sm md:text-base">
-                                    <div class="bilingual-text">
-                                        <span class="arabic-text">انضم إلى حملتنا المباركة في رمضان في فندق جولدن توليب الرياض</span>
-                                        <span class="english-text">Join our blessed Ramadan campaign at Golden Tulip Riyadh Hotel</span>
-                                    </div>
-                                </p>
-                            </div>
-
                             <!-- Toast Container -->
                             <div id="toast-container" class="mb-4 hidden">
                                 <div class="toast bg-green-500/90 text-white px-4 py-3 rounded-xl flex items-center gap-3">
@@ -520,7 +743,6 @@ i.fas.fa-chevron-right.ml-2 {
                                     <div id="toast-message"></div>
                                 </div>
                             </div>
-
                             <!-- Error Toast -->
                             <div id="error-container" class="mb-4 hidden">
                                 <div class="toast bg-red-500/90 text-white px-4 py-3 rounded-xl flex items-center gap-3">
@@ -530,7 +752,6 @@ i.fas.fa-chevron-right.ml-2 {
                                     <div id="error-message"></div>
                                 </div>
                             </div>
-
                             <!-- Form -->
                             <form id="ramadan-form" class="space-y-5">
                                 <!-- Name Field -->
@@ -545,7 +766,6 @@ i.fas.fa-chevron-right.ml-2 {
                                     </label>
                                     <input type="text" id="name" name="name" required placeholder="أدخل اسمك الكامل / Enter your full name" class="input-field w-full px-4 py-3 rounded-xl text-white placeholder-gray-400 outline-none">
                                 </div>
-
                                 <!-- Mobile Number Field -->
                                 <div class="input-group">
                                     <label for="mobile" class="input-label block text-white text-sm font-medium mb-2">
@@ -558,7 +778,6 @@ i.fas.fa-chevron-right.ml-2 {
                                     </label>
                                     <input style="text-align: right;" type="tel" id="mobile" name="mobile" required placeholder="أدخل رقم الجوال الخاص بك / Enter your mobile number" pattern="[0-9+\-\s]+" class="input-field w-full px-4 py-3 rounded-xl text-white placeholder-gray-400 outline-none">
                                 </div>
-
                                 <!-- Meal Type Field -->
                                 <div class="input-group">
                                     <label class="input-label block text-white text-sm font-medium mb-2">
@@ -590,7 +809,6 @@ i.fas.fa-chevron-right.ml-2 {
                                         </label>
                                     </div>
                                 </div>
-
                                 <!-- Number of Persons Field -->
                                 <div class="input-group">
                                     <label for="persons" class="input-label block text-white text-sm font-medium mb-2">
@@ -618,7 +836,6 @@ i.fas.fa-chevron-right.ml-2 {
                                     </div>
                                     <input type="hidden" id="persons" name="persons" value="1" required>
                                 </div>
-
                                 <!-- Date Field -->
                                 <div class="input-group">
                                     <label for="date" class="input-label block text-white text-sm font-medium mb-2">
@@ -631,7 +848,6 @@ i.fas.fa-chevron-right.ml-2 {
                                     </label>
                                     <input type="date" id="date" name="date" required class="input-field w-full px-4 py-3 rounded-xl text-white placeholder-gray-400 outline-none" style="color-scheme: dark;">
                                 </div>
-
                                 <!-- Additional Notes Field -->
                                 <div class="input-group">
                                     <label for="notes" class="input-label block text-white text-sm font-medium mb-2">
@@ -644,7 +860,6 @@ i.fas.fa-chevron-right.ml-2 {
                                     </label>
                                     <textarea id="notes" name="notes" rows="3" placeholder="أي ملاحظات أو طلبات خاصة / Any special notes or requests" class="input-field w-full px-4 py-3 rounded-xl text-white placeholder-gray-400 outline-none resize-none"></textarea>
                                 </div>
-
                                 <!-- Submit Button -->
                                 <button type="submit" id="submit-btn" class="submit-btn w-full py-4 rounded-xl text-gray-900 font-semibold text-lg mt-6 flex items-center justify-center gap-2">
                                     <span id="btn-text">
@@ -663,12 +878,11 @@ i.fas.fa-chevron-right.ml-2 {
                             </form>
                         </div>
                     </div>
-
                     <!-- Side Panel -->
                     <div class="lg:col-span-1">
                         <!-- Hotel Information Card -->
                         <div class="bg-white/10 rounded-3xl p-5 shadow-2xl border border-white/20 mb-6">
-                            <h3 class="text-white font-bold text-xl mb-4 flex items-center gap-2">
+                            <h3 class="text-white font-bold text-xl mb-4 flex items-center gap-2" >
                                 <i class="fas fa-hotel text-yellow-400"></i>
                                 <span class="bilingual-text">
                                     <span style="font-size: 14px;" class="arabic-text">فندق جولدن توليب الرياض</span>
@@ -689,8 +903,8 @@ i.fas.fa-chevron-right.ml-2 {
                                     <i class="fas fa-phone text-yellow-400 mt-1"></i>
                                     <div class="text-gray-300 text-sm">
                                         <div class="bilingual-text">
-                                            <span class="arabic-text"> 2256555 11  966 </span>
-                                            <span class="english-text"> 2256555 11  966 </span>
+                                            <span class="arabic-text">555266174 966</span>
+                                            <span class="english-text"> 555266174 966 </span>
                                         </div>
                                     </div>
                                 </div>
@@ -698,30 +912,19 @@ i.fas.fa-chevron-right.ml-2 {
                                     <i class="fas fa-envelope text-yellow-400 mt-1"></i>
                                     <div class="text-gray-300 text-sm">
                                         <div class="bilingual-text">
-                                            <span class="arabic-text">info@goldentulipriyadh.com</span>
-                                            <!-- <span class="english-text">info@goldentulipriyadh.com</span> -->
+                                            <span class="arabic-text">booking@goldentulipriyadh.com</span>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <div class="flex items-start gap-3">
-                                    <i class="fas fa-clock text-yellow-400 mt-1"></i>
-                                    <div class="text-gray-300 text-sm">
-                                        <div class="bilingual-text">
-                                            <span class="arabic-text">يومياً من الساعة 8:00 صباحاً حتى 10:00 مساءً</span>
-                                            <span class="english-text">Daily from 8:00 AM to 10:00 PM</span>
-                                        </div>
-                                    </div>
-                                </div> -->
                             </div>
                         </div>
-
                         <!-- Ramadan Offer Card -->
                         <div class="bg-gradient-to-br from-yellow-400/20 to-orange-500/20 rounded-3xl p-6 shadow-2xl border border-yellow-400/30 mb-6">
-                            <h3 class="text-white font-bold text-xl mb-4 flex items-center gap-2">
+                            <h3 class="text-white font-bold text-xl mb-4 flex items-center gap-2" style="justify-content: space-between;">
                                 <i class="fas fa-star text-yellow-400"></i>
                                 <span class="bilingual-text">
                                     <span style="font-size: 14px;" class="arabic-text">عروض رمضان الخاصة</span>
-                                    <span class="english-text">Ramadan Special Offers</span>
+                                    <span style="font-size: 14px;" class="english-text">Ramadan Special Offers</span>
                                 </span>
                             </h3>
                             <ul class="space-y-3 text-gray-300 text-sm">
@@ -755,10 +958,9 @@ i.fas.fa-chevron-right.ml-2 {
                                 </li>
                             </ul>
                         </div>
-
                         <!-- Quick Contact Card -->
                         <div class="bg-white/10 rounded-3xl p-6 shadow-2xl border border-white/20">
-                            <h3 class="text-white font-bold text-xl mb-4 flex items-center gap-2">
+                            <h3 class="text-white font-bold text-xl mb-4 flex items-center gap-2" >
                                 <i class="fas fa-phone-alt text-yellow-400"></i>
                                 <span class="bilingual-text">
                                     <span class="arabic-text">اتصل بنا بسرعة</span>
@@ -766,19 +968,19 @@ i.fas.fa-chevron-right.ml-2 {
                                 </span>
                             </h3>
                           <div class="space-y-3">
-                                <a href="tel:+966112256555" class="block w-full py-3 px-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 font-bold rounded-xl text-center hover:shadow-lg transition-all">
+                                <a href="tel:+966555266174" class="golden-btn block w-full py-3 px-4 text-center font-bold rounded-xl">
                                     <div class="bilingual-text">
                                         <span class="arabic-text">اتصل بالفندق</span>
                                         <span style="color: #000; font-weight: bolder;" class="english-text">Call Hotel</span>
                                     </div>
                                 </a>
-                                <a href="tel:+33170986118" class="block w-full py-3 px-4 bg-white/10 text-white font-bold rounded-xl text-center hover:bg-white/20 transition-all border border-white/20">
+                                <!-- <a href="tel:+33170986118" class="block w-full py-3 px-4 bg-white/10 text-white font-bold rounded-xl text-center hover:bg-white/20 transition-all border border-white/20">
                                     <div class="bilingual-text">
                                         <span class="arabic-text">الحجوزات</span>
                                         <span style="color: #fff;font-weight: bolder;" class="english-text">Bookings</span>
                                     </div>
-                                </a>
-                                <a href="mailto:info@goldentulipriyadh.com" class="block w-full py-3 px-4 bg-white/10 text-white font-bold rounded-xl text-center hover:bg-white/20 transition-all border border-white/20">
+                                </a> -->
+                                <a href="mailto:booking@goldentulipriyadh.com" class="block w-full py-3 px-4 bg-white/10 text-white font-bold rounded-xl text-center hover:bg-white/20 transition-all border border-white/20">
                                     <div class="bilingual-text">
                                         <span class="arabic-text">أرسل بريداً إلكترونياً</span>
                                         <span style="color: #fff;font-weight: bolder;" class="english-text">Send Email</span>
@@ -788,9 +990,8 @@ i.fas.fa-chevron-right.ml-2 {
                         </div>
                     </div>
                 </div>
-
                 <!-- Image Gallery Section -->
-                <div class="mt-12">
+                <!-- <div class="mt-12">
                     <h3 class="text-white font-bold text-2xl mb-6 text-center">
                         <div class="bilingual-text">
                             <span class="arabic-text flex items-center justify-center gap-2">
@@ -800,22 +1001,22 @@ i.fas.fa-chevron-right.ml-2 {
                             <span class="english-text">Ramadan Gallery at Our Hotel</span>
                         </div>
                     </h3>
-                    
-                    <!-- Image Gallery Grid -->
+                   
+                  
                     <div id="gallery-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6">
-                        <!-- Images will be loaded here -->
+                     
                     </div>
-                    
-                    <!-- Gallery Navigation -->
+                   
+                  
                     <div class="flex justify-center mt-6">
-                        <button id="prev-gallery" class="bg-white/10 text-white px-6 py-3 rounded-lg mx-2 hover:bg-white/20 transition">
+                        <button id="prev-gallery" class="golden-btn px-6 py-3 rounded-lg mx-2">
                             <i class="fas fa-chevron-right ml-2"></i>
                             <span class="bilingual-text">
                                 <span class="arabic-text">السابق</span>
                                 <span class="english-text">Previous</span>
                             </span>
                         </button>
-                        <button id="next-gallery" class="bg-white/10 text-white px-6 py-3 rounded-lg mx-2 hover:bg-white/20 transition">
+                        <button id="next-gallery" class="golden-btn px-6 py-3 rounded-lg mx-2">
                             <span class="bilingual-text">
                                 <span class="arabic-text">التالي</span>
                                 <span class="english-text">Next</span>
@@ -823,10 +1024,9 @@ i.fas.fa-chevron-right.ml-2 {
                             <i class="fas fa-chevron-left mr-2"></i>
                         </button>
                     </div>
-                </div>
+                </div> -->
             </div>
         </main>
-
         <!-- Footer -->
         <footer class="footer relative z-10 mt-12">
             <div class="max-w-7xl mx-auto px-4 py-8">
@@ -846,93 +1046,12 @@ i.fas.fa-chevron-right.ml-2 {
                         <circle cx="230" cy="33" r="3.5" />
                     </svg>
                 </div>
-
-                <!-- <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8">
-                    
-                    <div class="footer-section pb-6">
-                        <h3 class="text-white font-bold text-lg mb-4">
-                            <span class="bilingual-text">
-                                <span class="arabic-text">معلومات الاتصال</span>
-                                <span class="english-text">Contact Information</span>
-                            </span>
-                        </h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-3">
-                                <i class="fas fa-map-marker-alt text-yellow-400 mt-0.5"></i>
-                                <div class="text-gray-300 text-sm">
-                                    <div class="bilingual-text">
-                                        <span class="arabic-text">طريق الملك عبد الله - شارع الفضول - حي الملك فيصل، 13215 الرياض</span>
-                                        <span class="english-text">King Abdullah Road - Alfdoul Street - King Faisal District, 13215 Riyadh</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <i class="fas fa-phone text-yellow-400"></i>
-                                <div class="text-gray-300 text-sm">
-                                    <div class="bilingual-text">
-                                        <span class="arabic-text"> 2256555 11  966 </span>
-                                        <span class="english-text"> 2256555 11  966 </span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <i class="fas fa-envelope text-yellow-400"></i>
-                                <div class="text-gray-300 text-sm">
-                                    <div class="bilingual-text">
-                                        <span class="arabic-text">info@goldentulipriyadh.com</span>
-                                       <span class="english-text">info@goldentulipriyadh.com</span> 
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-               
-                    <div class="footer-section pb-6">
-                        <h3 class="text-white font-bold text-lg mb-4">
-                            <span class="bilingual-text">
-                                <span class="arabic-text">ساعات العمل في رمضان</span>
-                                <span class="english-text">Ramadan Working Hours</span>
-                            </span>
-                        </h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-3">
-                                <i class="fas fa-clock text-yellow-400 mt-0.5"></i>
-                                <div class="text-gray-300 text-sm">
-                                    <div class="bilingual-text">
-                                        <span class="arabic-text">الإفطار: 6:00 مساءً - 9:00 مساءً</span>
-                                        <span class="english-text">Iftar: 6:00 PM - 9:00 PM</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <i class="fas fa-clock text-yellow-400 mt-0.5"></i>
-                                <div class="text-gray-300 text-sm">
-                                    <div class="bilingual-text">
-                                        <span class="arabic-text">السحور: 2:00 صباحاً - 4:00 صباحاً</span>
-                                        <span class="english-text">Sahur: 2:00 AM - 4:00 AM</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <i class="fas fa-phone text-yellow-400 mt-0.5"></i>
-                                <div class="text-gray-300 text-sm">
-                                    <div class="bilingual-text">
-                                        <span class="arabic-text">الحجوزات:   170986118 (33+)    </span>
-                                        <span class="english-text">Bookings: (+33) 1 70 98 61 18</span>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div> -->
-
                 <!-- Copyright -->
                 <div class="border-t border-white/10 mt-8 pt-6 text-center">
                     <p class="text-gray-400 text-sm">
                         <div class="bilingual-text">
                             <span class="arabic-text">© 2026 فندق جولدن توليب الرياض. جميع الحقوق محفوظة.</span>
-                            <span class="english-text">© 2023 Golden Tulip Riyadh Hotel. All rights reserved.</span>
+                            <span class="english-text">© 2026 Golden Tulip Riyadh Hotel. All rights reserved.</span>
                         </div>
                     </p>
                     <p class="text-gray-400 text-xs mt-2">
@@ -945,7 +1064,6 @@ i.fas.fa-chevron-right.ml-2 {
             </div>
         </footer>
     </div>
-
     <!-- Success Modal -->
     <div id="success-modal" class="fixed inset-0 z-50 hidden modal-overlay">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
@@ -955,7 +1073,7 @@ i.fas.fa-chevron-right.ml-2 {
                 <button id="close-modal" class="absolute top-4 left-4 text-white hover:text-yellow-400 text-2xl z-10">
                     <i class="fas fa-times"></i>
                 </button>
-                
+               
                 <!-- Modal Content -->
                 <div class="text-center">
                     <!-- Success Icon -->
@@ -964,7 +1082,7 @@ i.fas.fa-chevron-right.ml-2 {
                             <i class="fas fa-check text-4xl text-white"></i>
                         </div>
                     </div>
-                    
+                   
                     <!-- Title -->
                     <h2 class="font-amiri text-3xl md:text-4xl font-bold text-white mb-4">
                         <div class="bilingual-text">
@@ -972,7 +1090,7 @@ i.fas.fa-chevron-right.ml-2 {
                             <span class="english-text">Registration Successful!</span>
                         </div>
                     </h2>
-                    
+                   
                     <!-- Message -->
                     <div class="bg-white/10 rounded-2xl p-6 mb-8">
                         <p class="text-white text-lg mb-6">
@@ -993,7 +1111,7 @@ i.fas.fa-chevron-right.ml-2 {
                                 </span>
                             </div>
                         </p>
-                        
+                       
                         <!-- Contact Info in Modal -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
                             <div class="bg-white/5 p-4 rounded-xl">
@@ -1012,11 +1130,11 @@ i.fas.fa-chevron-right.ml-2 {
                                         <span class="english-text">Hotel Direct</span>
                                     </div>
                                 </h4>
-                                <p class="text-white"> 2256555 11  966 </p>
+                                <p class="text-white"> 555266174 966 </p>
                             </div>
                         </div>
                     </div>
-                    
+                   
                     <!-- Gallery Section in Modal -->
                     <div class="mb-8">
                         <h3 class="text-white font-bold text-xl mb-4">
@@ -1025,7 +1143,7 @@ i.fas.fa-chevron-right.ml-2 {
                                 <span class="english-text">Enjoy a Unique Ramadan Experience</span>
                             </div>
                         </h3>
-                        
+                       
                         <!-- Slider Container -->
                         <div class="swiper modal-swiper rounded-2xl overflow-hidden">
                             <div class="swiper-wrapper">
@@ -1037,7 +1155,7 @@ i.fas.fa-chevron-right.ml-2 {
                             <!-- Pagination -->
                             <div class="swiper-pagination"></div>
                         </div>
-                        
+                       
                         <p class="text-gray-300 mt-4 text-sm">
                             <div class="bilingual-text">
                                 <span class="arabic-text">تصفح بعض الصور من أجواء رمضان لدينا</span>
@@ -1045,16 +1163,16 @@ i.fas.fa-chevron-right.ml-2 {
                             </div>
                         </p>
                     </div>
-                    
+                   
                     <!-- Action Buttons -->
                     <div class="flex flex-col md:flex-row gap-4 justify-center">
-                        <button id="close-modal-btn" class="px-8 py-3 bg-gradient-to-r from-[#ffd700] to-[#ffb700] text-gray-900 font-bold rounded-xl hover:shadow-lg hover:shadow-yellow-500/30 transition-all">
+                        <button id="close-modal-btn" class="golden-btn px-8 py-3 rounded-xl">
                             <div class="bilingual-text">
                                 <span class="arabic-text">حسناً، فهمت</span>
                                 <span style="color: #000;" class="english-text">OK, I Understand</span>
                             </div>
                         </button>
-                        <a href="tel:+966112256555" class="px-8 py-3 bg-white/10 text-white font-bold rounded-xl hover:bg-white/20 transition-all border border-white/20">
+                        <a href="tel:+966555266174" class="px-8 py-3 bg-white/10 text-white font-bold rounded-xl hover:bg-white/20 transition-all border border-white/20">
                             <div class="bilingual-text">
                                 <span class="arabic-text">اتصل الآن</span>
                                 <span class="english-text">Call Now</span>
@@ -1065,7 +1183,6 @@ i.fas.fa-chevron-right.ml-2 {
             </div>
         </div>
     </div>
-
     <!-- Image View Modal -->
     <div id="image-modal" class="fixed inset-0 z-50 hidden modal-overlay image-modal-overlay">
         <div class="absolute inset-0" id="image-modal-bg"></div>
@@ -1079,7 +1196,6 @@ i.fas.fa-chevron-right.ml-2 {
             </div>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         // Current state
@@ -1088,7 +1204,8 @@ i.fas.fa-chevron-right.ml-2 {
         let currentGalleryIndex = 0;
         let modalSwiper = null;
         let personsCount = 1;
-        
+        let currentSlideIndex = 0;
+       
         // Hotel images data
         const hotelImages = [
             {
@@ -1137,12 +1254,12 @@ i.fas.fa-chevron-right.ml-2 {
                 captionEn: "Restaurant at Golden Tulip Riyadh Hotel"
             }
         ];
-
+        
         // Create animated stars
         function createStars() {
             const container = document.getElementById('stars-container');
             if (!container) return;
-            
+           
             for (let i = 0; i < 50; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
@@ -1154,12 +1271,12 @@ i.fas.fa-chevron-right.ml-2 {
                 container.appendChild(star);
             }
         }
-
+        
         // Create floating particles
         function createParticles() {
             const container = document.getElementById('particles-container');
             if (!container) return;
-            
+           
             const symbols = ['✨', '⭐', '🌟', '💫'];
             for (let i = 0; i < 15; i++) {
                 const particle = document.createElement('div');
@@ -1172,20 +1289,97 @@ i.fas.fa-chevron-right.ml-2 {
                 container.appendChild(particle);
             }
         }
-
+        
+        // Initialize gallery slider with main image and thumbnails
+        function initGallerySlider() {
+            const mainImage = document.getElementById('main-gallery-image');
+            const imageCaption = document.querySelector('.image-caption .bilingual-text');
+            const thumbnailsContainer = document.getElementById('thumbnails-container');
+            
+            if (!mainImage || !thumbnailsContainer) return;
+            
+            // Create thumbnails
+            hotelImages.forEach((image, index) => {
+                const thumbnail = document.createElement('div');
+                thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
+                thumbnail.innerHTML = `<img src="${image.url}" alt="${image.captionAr}">`;
+                thumbnail.addEventListener('click', () => showSlide(index));
+                thumbnailsContainer.appendChild(thumbnail);
+            });
+            
+            // Set up navigation
+            document.getElementById('prev-slide').addEventListener('click', prevSlide);
+            document.getElementById('next-slide').addEventListener('click', nextSlide);
+            
+            // Auto-advance slides
+            setInterval(nextSlide, 5000);
+        }
+        
+        // Show specific slide
+        function showSlide(index) {
+            const mainImage = document.getElementById('main-gallery-image');
+            const imageCaption = document.querySelector('.image-caption .bilingual-text');
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            
+            if (mainImage && imageCaption && thumbnails.length > 0) {
+                // Update current slide index
+                currentSlideIndex = index;
+                
+                // Update main image with fade effect
+                mainImage.style.opacity = '0';
+                setTimeout(() => {
+                    mainImage.src = hotelImages[currentSlideIndex].url;
+                    mainImage.alt = hotelImages[currentSlideIndex].captionAr;
+                    mainImage.style.opacity = '1';
+                }, 300);
+                
+                // Update caption
+                imageCaption.innerHTML = `
+                    <div class="arabic-text">${hotelImages[currentSlideIndex].captionAr}</div>
+                    <div class="english-text">${hotelImages[currentSlideIndex].captionEn}</div>
+                `;
+                
+                // Update active thumbnail
+                thumbnails.forEach((thumb, i) => {
+                    thumb.classList.toggle('active', i === currentSlideIndex);
+                });
+                
+                // Scroll thumbnail into view if needed
+                if (thumbnails[currentSlideIndex]) {
+                    thumbnails[currentSlideIndex].scrollIntoView({
+                        behavior: 'smooth',
+                        inline: 'center',
+                        block: 'nearest'
+                    });
+                }
+            }
+        }
+        
+        // Go to next slide
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % hotelImages.length;
+            showSlide(currentSlideIndex);
+        }
+        
+        // Go to previous slide
+        function prevSlide() {
+            currentSlideIndex = (currentSlideIndex - 1 + hotelImages.length) % hotelImages.length;
+            showSlide(currentSlideIndex);
+        }
+        
         // Load gallery images
         function loadGalleryImages() {
             const galleryContainer = document.getElementById('gallery-container');
             if (!galleryContainer) return;
-            
+           
             // Show first 8 images in the gallery
             const imagesToShow = hotelImages.slice(0, 8);
-            
+           
             imagesToShow.forEach((image, index) => {
                 const imgElement = document.createElement('div');
                 imgElement.className = 'gallery-image rounded-xl overflow-hidden bg-black/30';
                 imgElement.innerHTML = `
-                    <img src="${image.url}" alt="${image.captionAr}" 
+                    <img src="${image.url}" alt="${image.captionAr}"
                          class="w-full h-32 md:h-40 object-cover"
                          data-index="${index}"
                          loading="lazy">
@@ -1197,13 +1391,13 @@ i.fas.fa-chevron-right.ml-2 {
                 galleryContainer.appendChild(imgElement);
             });
         }
-
+        
         // Initialize modal swiper
         function initModalSwiper() {
             if (modalSwiper) {
                 modalSwiper.destroy();
             }
-            
+           
             modalSwiper = new Swiper('.modal-swiper', {
                 direction: 'horizontal',
                 loop: true,
@@ -1223,17 +1417,17 @@ i.fas.fa-chevron-right.ml-2 {
                     prevEl: '.swiper-button-prev',
                 },
             });
-            
+           
             // Add slides to swiper
             const swiperWrapper = document.querySelector('.modal-swiper .swiper-wrapper');
             swiperWrapper.innerHTML = '';
-            
+           
             hotelImages.forEach((image, index) => {
                 const slide = document.createElement('div');
                 slide.className = 'swiper-slide';
                 slide.innerHTML = `
                     <div class="relative rounded-xl overflow-hidden">
-                        <img src="${image.url}" alt="${image.captionAr}" 
+                        <img src="${image.url}" alt="${image.captionAr}"
                              class="w-full h-64 md:h-80 object-cover"
                              data-index="${index}">
                         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
@@ -1246,15 +1440,14 @@ i.fas.fa-chevron-right.ml-2 {
                 `;
                 swiperWrapper.appendChild(slide);
             });
-            
+           
             modalSwiper.update();
         }
-
+        
         // Show toast notification
         function showToast(messageAr, messageEn, isError = false) {
             const toastContainer = document.getElementById('toast-container');
             const errorContainer = document.getElementById('error-container');
-
             if (isError) {
                 const errorMsg = document.getElementById('error-message');
                 errorMsg.innerHTML = `
@@ -1277,66 +1470,66 @@ i.fas.fa-chevron-right.ml-2 {
                 setTimeout(() => toastContainer.classList.add('hidden'), 4000);
             }
         }
-
+        
         // Show success modal
         function showSuccessModal() {
             const modal = document.getElementById('success-modal');
             modal.classList.remove('hidden');
-            
+           
             // Initialize swiper in modal
             setTimeout(() => {
                 initModalSwiper();
             }, 100);
-            
+           
             // Disable body scroll
             document.body.style.overflow = 'hidden';
         }
-
+        
         // Close success modal
         function closeSuccessModal() {
             const modal = document.getElementById('success-modal');
             modal.classList.add('hidden');
-            
+           
             // Enable body scroll
             document.body.style.overflow = 'auto';
         }
-
+        
         // Open image modal
         function openImageModal(index) {
             const modal = document.getElementById('image-modal');
             const modalImage = document.getElementById('modal-image');
             const imageCaption = document.getElementById('image-caption');
-            
+           
             const image = hotelImages[index];
             modalImage.src = image.url;
             modalImage.alt = image.captionAr;
-            
+           
             imageCaption.innerHTML = `
                 <div class="bilingual-text">
                     <div class="arabic-text">${image.captionAr}</div>
                     <div class="english-text">${image.captionEn}</div>
                 </div>
             `;
-            
+           
             modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
-
+        
         // Close image modal
         function closeImageModal() {
             const modal = document.getElementById('image-modal');
             modal.classList.add('hidden');
             document.body.style.overflow = 'auto';
         }
-
+        
         // Update submission count
         function updateSubmissionCount(count) {
             const countEl = document.getElementById('submission-count');
             // Check if element exists before trying to update it
             if (!countEl) return;
-            
+           
             let textAr, textEn;
-            
+           
             if (count === 0) {
                 textAr = '0 تسجيل';
                 textEn = '0 Registration';
@@ -1350,22 +1543,22 @@ i.fas.fa-chevron-right.ml-2 {
                 textAr = `${count} تسجيل`;
                 textEn = `${count} Registrations`;
             }
-            
+           
             countEl.textContent = `${textAr} / ${textEn}`;
         }
-
+        
         // Set loading state
         function setLoading(loading) {
             isSubmitting = loading;
             const btn = document.getElementById('submit-btn');
             const btnText = document.getElementById('btn-text');
             const btnLoader = document.getElementById('btn-loader');
-            
+           
             btn.disabled = loading;
             btnText.classList.toggle('hidden', loading);
             btnLoader.classList.toggle('hidden', !loading);
         }
-
+        
         // Initialize persons counter
         function initPersonsCounter() {
             const decreaseBtn = document.getElementById('decrease-persons');
@@ -1373,11 +1566,11 @@ i.fas.fa-chevron-right.ml-2 {
             const valueDisplay = document.getElementById('persons-value');
             const hiddenInput = document.getElementById('persons');
             const labelDisplay = document.querySelector('.counter-label');
-            
+           
             function updateDisplay() {
                 valueDisplay.textContent = personsCount;
                 hiddenInput.value = personsCount;
-                
+               
                 // Update label based on count
                 if (personsCount === 1) {
                     labelDisplay.innerHTML = `
@@ -1400,37 +1593,37 @@ i.fas.fa-chevron-right.ml-2 {
                         <span class="english-text">Persons</span>
                     `;
                 }
-                
+               
                 // Disable/enable buttons based on limits
                 decreaseBtn.disabled = personsCount <= 1;
                 increaseBtn.disabled = personsCount >= 20;
             }
-            
+           
             decreaseBtn.addEventListener('click', () => {
                 if (personsCount > 1) {
                     personsCount--;
                     updateDisplay();
                 }
             });
-            
+           
             increaseBtn.addEventListener('click', () => {
                 if (personsCount < 20) {
                     personsCount++;
                     updateDisplay();
                 }
             });
-            
+           
             // Initialize display
             updateDisplay();
         }
-
+        
         // Submit form to Google Sheets via Apps Script
         async function submitToGoogleSheets(data) {
             try {
                 // This is the Google Apps Script Web App URL that handles form submissions
                 // You need to replace this with your actual deployed script URL
                 const scriptURL = 'https://script.google.com/macros/s/AKfycbzKvg6CU98pQ1jPyJKtP8-Mjky0CLiVanpqi5VWPCutLSNu2orj-n3otV0BZRAGKOCs/exec';
-                
+               
                 const response = await fetch(scriptURL, {
                     method: 'POST',
                     mode: 'no-cors', // This is necessary for Google Apps Script
@@ -1446,7 +1639,7 @@ i.fas.fa-chevron-right.ml-2 {
                         notes: data.notes,
                     })
                 });
-                
+               
                 // Since we use no-cors, we can't check response status
                 // We'll proceed as if it was successful
                 return true;
@@ -1456,42 +1649,42 @@ i.fas.fa-chevron-right.ml-2 {
                 return false;
             }
         }
-
+        
         // Handle form submission
         async function handleSubmit(e) {
             e.preventDefault();
             if (isSubmitting) return;
-            
+           
             // Basic validation
             const name = document.getElementById('name').value.trim();
             const mobile = document.getElementById('mobile').value.trim();
             const mealType = document.querySelector('input[name="meal_type"]:checked');
             const persons = document.getElementById('persons').value;
             const date = document.getElementById('date').value;
-            
+           
             if (!name || !mobile || !mealType || !persons || !date) {
                 showToast('يرجى ملء جميع الحقول المطلوبة', 'Please fill all required fields', true);
                 return;
             }
-            
+           
             // Check if date is valid (not in the past)
             const selectedDate = new Date(date);
             const today = new Date();
             today.setHours(0, 0, 0, 0);
-            
+           
             if (selectedDate < today) {
                 showToast('يرجى اختيار تاريخ مستقبلي', 'Please select a future date', true);
                 return;
             }
-            
+           
             // Check limit (just for demo purposes)
             if (submissionCount >= 999) {
                 showToast('تم الوصول إلى الحد الأقصى للتسجيلات. شكراً لاهتمامكم!', 'Maximum registrations reached. Thank you for your interest!', true);
                 return;
             }
-            
+           
             setLoading(true);
-            
+           
             const formData = {
                 name: name,
                 mobile_number: mobile,
@@ -1500,26 +1693,26 @@ i.fas.fa-chevron-right.ml-2 {
                 date: date,
                 notes: document.getElementById('notes').value.trim()
             };
-            
+           
             try {
                 // Save to Google Sheets
                 const saved = await submitToGoogleSheets(formData);
-                
+               
                 if (saved) {
                     // Update submission count
                     submissionCount++;
                     updateSubmissionCount(submissionCount);
-                    
+                   
                     // Show success modal
                     showSuccessModal();
-                    
+                   
                     // Show success toast
                     showToast('تم التسجيل بنجاح! رمضانك مبارك', 'Successfully registered! May your Ramadan be blessed', false);
-                    
+                   
                     // Reset form
                     document.getElementById('ramadan-form').reset();
                     document.querySelector('input[name="meal_type"]:checked').checked = false;
-                    
+                   
                     // Reset persons counter
                     personsCount = 1;
                     document.getElementById('persons-value').textContent = '1';
@@ -1535,48 +1728,48 @@ i.fas.fa-chevron-right.ml-2 {
                 console.error('Form submission error:', error);
                 showToast('حدث خطأ ما. يرجى المحاولة مرة أخرى', 'Something went wrong. Please try again', true);
             }
-            
+           
             setLoading(false);
         }
-
+        
         // Set minimum date to today
         function setMinDate() {
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('date').setAttribute('min', today);
         }
-
+        
         // Initialize gallery navigation
         function initGalleryNavigation() {
             const prevBtn = document.getElementById('prev-gallery');
             const nextBtn = document.getElementById('next-gallery');
             const galleryImages = document.querySelectorAll('#gallery-container .gallery-image');
-            
+           
             if (prevBtn && nextBtn && galleryImages.length > 0) {
                 prevBtn.addEventListener('click', () => {
                     currentGalleryIndex = (currentGalleryIndex - 1 + hotelImages.length) % hotelImages.length;
                     updateGalleryDisplay();
                 });
-                
+               
                 nextBtn.addEventListener('click', () => {
                     currentGalleryIndex = (currentGalleryIndex + 1) % hotelImages.length;
                     updateGalleryDisplay();
                 });
             }
         }
-        
+       
         function updateGalleryDisplay() {
             const galleryContainer = document.getElementById('gallery-container');
             galleryContainer.innerHTML = '';
-            
+           
             // Show 8 images starting from currentGalleryIndex
             for (let i = 0; i < 8; i++) {
                 const index = (currentGalleryIndex + i) % hotelImages.length;
                 const image = hotelImages[index];
-                
+               
                 const imgElement = document.createElement('div');
                 imgElement.className = 'gallery-image rounded-xl overflow-hidden bg-black/30';
                 imgElement.innerHTML = `
-                    <img src="${image.url}" alt="${image.captionAr}" 
+                    <img src="${image.url}" alt="${image.captionAr}"
                          class="w-full h-32 md:h-40 object-cover"
                          data-index="${index}"
                          loading="lazy">
@@ -1588,37 +1781,40 @@ i.fas.fa-chevron-right.ml-2 {
                 galleryContainer.appendChild(imgElement);
             }
         }
-
+        
         // Initialize
         function init() {
             // Create visual effects
             createStars();
             createParticles();
-            
+           
             // Set minimum date
             setMinDate();
-            
+           
             // Initialize persons counter
             initPersonsCounter();
-            
+           
             // Setup form handler
             document.getElementById('ramadan-form').addEventListener('submit', handleSubmit);
+           
+            // Initialize gallery slider with main image and thumbnails
+            initGallerySlider();
             
             // Load gallery images
             loadGalleryImages();
-            
+           
             // Initialize gallery navigation
             initGalleryNavigation();
-            
+           
             // Load initial submission count (in a real app, this would come from server)
             updateSubmissionCount(submissionCount);
-            
+           
             // Modal event listeners
             document.getElementById('close-modal').addEventListener('click', closeSuccessModal);
             document.getElementById('close-modal-btn').addEventListener('click', closeSuccessModal);
             document.getElementById('close-image-modal').addEventListener('click', closeImageModal);
             document.getElementById('image-modal-bg').addEventListener('click', closeImageModal);
-            
+           
             // Close modal when clicking outside
             document.getElementById('success-modal').addEventListener('click', (e) => {
                 if (e.target.id === 'success-modal') {
@@ -1626,7 +1822,7 @@ i.fas.fa-chevron-right.ml-2 {
                 }
             });
         }
-
+        
         // Start the app when DOM is fully loaded
         document.addEventListener('DOMContentLoaded', init);
     </script>
