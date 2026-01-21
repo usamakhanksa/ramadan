@@ -585,7 +585,15 @@
       .HeaderHimSinglePage-styled__TitleText-lhg__sc-13903f3d-3.zUNYF{
           position:unset;
       }
-        
+        .flex.flex-col.md\:flex-row.gap-4.text-white.text-sm {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
         }
          .single-fanoos{
 z-index: 99999999999999999999;position: relative;top: -131px;
@@ -1472,35 +1480,56 @@ z-index: 99999999999999999999;position: relative;top: -131px;
 
             setInterval(nextSlide, 5000);
         }
+function isElementInView(el, container) {
+    const elRect = el.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
 
-        function showSlide(index) {
-            const mainImage = document.getElementById('main-gallery-image');
-            const imageCaption = document.querySelector('.image-caption .bilingual-text');
-            const thumbnails = document.querySelectorAll('.thumbnail');
+    return (
+        elRect.left >= containerRect.left &&
+        elRect.right <= containerRect.right
+    );
+}
 
-            if (mainImage && imageCaption && thumbnails.length > 0) {
-                currentSlideIndex = index;
-                mainImage.style.opacity = '0';
-                setTimeout(() => {
-                    mainImage.src = hotelImages[currentSlideIndex].url;
-                    mainImage.alt = hotelImages[currentSlideIndex].captionAr;
-                    mainImage.style.opacity = '1';
-                }, 300);
+       function showSlide(index) {
+    const mainImage = document.getElementById('main-gallery-image');
+    const imageCaption = document.querySelector('.image-caption .bilingual-text');
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    const thumbContainer = document.querySelector('.thumbnails-container'); // parent wrapper
 
-                imageCaption.innerHTML = `
-                    <div class="arabic-text">${hotelImages[currentSlideIndex].captionAr}</div>
-                    <div class="english-text">${hotelImages[currentSlideIndex].captionEn}</div>
-                `;
+    if (!mainImage || !imageCaption || thumbnails.length === 0) return;
 
-                thumbnails.forEach((thumb, i) => {
-                    thumb.classList.toggle('active', i === currentSlideIndex);
-                });
+    currentSlideIndex = index;
 
-                if (thumbnails[currentSlideIndex]) {
-                    thumbnails[currentSlideIndex].scrollIntoView({ behavior: 'smooth', inline: 'center' });
-                }
-            }
-        }
+    // Fade image
+    mainImage.style.opacity = '0';
+    setTimeout(() => {
+        mainImage.src = hotelImages[currentSlideIndex].url;
+        mainImage.alt = hotelImages[currentSlideIndex].captionAr;
+        mainImage.style.opacity = '1';
+    }, 300);
+
+    // Update caption
+    imageCaption.innerHTML = `
+        <div class="arabic-text">${hotelImages[currentSlideIndex].captionAr}</div>
+        <div class="english-text">${hotelImages[currentSlideIndex].captionEn}</div>
+    `;
+
+    // Update active thumbnail
+    thumbnails.forEach((thumb, i) => {
+        thumb.classList.toggle('active', i === currentSlideIndex);
+    });
+
+    // Scroll ONLY if thumbnail is outside view
+    const activeThumb = thumbnails[currentSlideIndex];
+    if (activeThumb && thumbContainer && !isElementInView(activeThumb, thumbContainer)) {
+        activeThumb.scrollIntoView({
+            behavior: 'smooth',
+            inline: 'center',
+            block: 'nearest'
+        });
+    }
+}
+
 
         function nextSlide() {
             currentSlideIndex = (currentSlideIndex + 1) % hotelImages.length;
