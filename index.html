@@ -11,6 +11,8 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <!-- Cloudflare Turnstile -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <style>
         body {
             box-sizing: border-box;
@@ -875,6 +877,13 @@ z-index: 99999999999999999999;position: relative;top: -131px;
         .ramadan-kareem{
                   width: 18%;
         }
+        
+        /* Cloudflare Turnstile styling */
+        .cf-turnstile {
+            margin: 1.5rem 0;
+            display: flex;
+            justify-content: center;
+        }
     </style>
 </head>
 
@@ -1158,9 +1167,13 @@ z-index: 99999999999999999999;position: relative;top: -131px;
                                         placeholder="أي ملاحظات أو طلبات خاصة / Any special notes or requests"
                                         class="input-field w-full px-4 py-3 rounded-xl text-white placeholder-gray-400 outline-none resize-none"></textarea>
                                 </div>
+                                
+                                <!-- Cloudflare Turnstile -->
+                                <div class="cf-turnstile" data-sitekey="0x4AAAAAAABkMYinukE8nzjO" data-callback="onTurnstileSuccess"></div>
+                                
                                 <!-- Submit Button -->
                                 <button type="submit" id="submit-btn"
-                                    class="submit-btn w-full py-2 rounded-xl text-gray-900 font-semibold text-lg mt-6 gap-2" >
+                                    class="submit-btn w-full  rounded-xl text-gray-900 font-semibold text-lg mt-6 gap-2" >
                                     <span id="btn-text" style="display: flex;justify-content: space-between;">
                                        <span class="golden-btn block w-full py-3 px-4 text-center font-bold rounded-xl" style="display: flex;justify-content: space-between;">
                                     <span style="font-size: 14px;" class="arabic-text">سجل الآن</span>
@@ -1456,6 +1469,7 @@ z-index: 99999999999999999999;position: relative;top: -131px;
         let modalSwiper = null;
         let personsCount = 1;
         let currentSlideIndex = 0;
+        let turnstileToken = '';
 
         // Hotel images data
         const hotelImages = [
@@ -1469,6 +1483,12 @@ z-index: 99999999999999999999;position: relative;top: -131px;
             { url: "https://media.iceportal.com/138837/photos/71671870_XXL.jpg", captionAr: "مطعم فندق جولدن توليب الرياض", captionEn: "Restaurant at HOTEL GOLDEN TULIP RIYADH" },
             { url: "https://media.iceportal.com/138837/photos/71671480_XXL.jpg", captionAr: "مطعم فندق جولدن توليب الرياض", captionEn: "Restaurant at HOTEL GOLDEN TULIP RIYADH" }
         ];
+
+        // Turnstile callback function
+        function onTurnstileSuccess(token) {
+            turnstileToken = token;
+            console.log('Turnstile success:', token);
+        }
 
         // Create animated stars
         function createStars() {
@@ -1725,6 +1745,12 @@ function isElementInView(el, container) {
                 return;
             }
 
+            // Check if Turnstile is completed
+            if (!turnstileToken) {
+                showToast('يرجى إكمال التحقق من الإنسان', 'Please complete the human verification', true);
+                return;
+            }
+
             // Ramadan date validation
             const selectedDate = new Date(date);
             const minDate = new Date('2026-02-16');
@@ -1746,7 +1772,8 @@ function isElementInView(el, container) {
                 meal_type: mealType.value,
                 persons,
                 date,
-                notes: document.getElementById('notes').value.trim()
+                notes: document.getElementById('notes').value.trim(),
+                'cf-turnstile-response': turnstileToken
             };
 
             const success = await submitToGoogleSheets(formData);
@@ -1758,6 +1785,11 @@ function isElementInView(el, container) {
                 personsCount = 1;
                 document.getElementById('persons-value').textContent = '1';
                 document.getElementById('persons').value = '1';
+                // Reset Turnstile
+                turnstileToken = '';
+                if (window.turnstile) {
+                    window.turnstile.reset();
+                }
             } else {
                 showToast('حدث خطأ، حاول مرة أخرى', 'An error occurred, please try again', true);
             }
